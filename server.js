@@ -8,8 +8,14 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const sessionSecret = process.env.SESSION_SECRET || 'dlwkdnkcwednacnweodj83842efnckd';
 
+const allowedOrigins = [
+  'https://bitboycryptochannel.com',
+  'http://localhost:5173'
+ 
+ 
+];
 // MIDDLEWARES
-app.use(cors({ origin: 'https://bitboycryptochannel.com' })); // Set the origin to allow requests from 'http://localhost:5173'
+app.use(cors({ origin: allowedOrigins })); // Set the origin to allow requests from 'http://localhost:5173'
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
