@@ -99,6 +99,17 @@ const loginHandler = async (req, res) => {
       });
     }
 
+    const userDisability = userDetails.status
+
+    if(userDisability == 'disabled') {
+
+      return res.status(404).json({ 
+        success: false,
+        message: 'Registration pending' 
+      });
+
+    }
+
    
     req.session.user = {
       id: user._id,

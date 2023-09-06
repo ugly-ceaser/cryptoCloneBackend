@@ -16,6 +16,9 @@ const {getTotalDeposit,
     router.post('/updateProfit',updateUserProfit)
     router.get('/deleteUser/:userId',deleteUserByUserId) //used
     router.get('/getAllUsers',getTotalNumberOfUsers) //used
+    router.get('/handleDeposit/:id/:status',handleDeposit) //used
+
+
 
 
 

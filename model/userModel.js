@@ -36,6 +36,11 @@ const userSchema = new Schema(
       required:false,
       default: 'Basic'
     },
+    status:{
+      type: String,
+      required:true,
+      default: 'disabled'
+    },
 
     role:{
       type: String,
