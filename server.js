@@ -13,7 +13,7 @@ const sessionSecret = process.env.SESSION_SECRET || 'dlwkdnkcwednacnweodj83842ef
 
 const allowedOrigins = [
   'https://bitboycryptochannel.com',
-  'http://localhost:5173'
+  'http://localhost:5173',
 ];
 
 const corsOptions = {
