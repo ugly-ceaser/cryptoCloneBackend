@@ -42,12 +42,14 @@ const fetchAllDeposits = async (req, res) => {
   
   
   const handleDeposit = async (req, res) => {
-    const depositId = req.params.id;
+    const transactionId = req.params.transactionId; 
     const status = req.params.status;
+
+    console.log(transactionId);
   
     try {
-      const deposit = await depositModel.findByIdAndUpdate(
-        depositId,
+      const deposit = await depositModel.findOneAndUpdate(
+        { transactionId }, // Use transactionId to find the document
         { $set: { status } },
         { new: true }
       );
@@ -72,6 +74,7 @@ const fetchAllDeposits = async (req, res) => {
       });
     }
   };
+  
 
   const depositUser = async (req, res) => {
     try {

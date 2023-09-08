@@ -9,13 +9,23 @@ const PORT = process.env.PORT || 3000;
 const sessionSecret = process.env.SESSION_SECRET || 'dlwkdnkcwednacnweodj83842efnckd';
 
 // MIDDLEWARES
+
+
 const allowedOrigins = [
   'https://bitboycryptochannel.com',
-
+  'http://localhost:5173'
 ];
 
+const corsOptions = {
+  origin: allowedOrigins, // Replace with your frontend URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Allow cookies and sessions
+};
+
+
 // Use CORS middleware with the allowed origins
-app.use(cors({ origin: allowedOrigins }));
+app.use(cors(corsOptions));
+app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
   secret: sessionSecret,

@@ -18,5 +18,5 @@ router.post('/update',updateUserDetails);
 
 
 module.exports = router
-// `https://backendsample.metafinre.com/api/v1/users/update`
-// `https://backendsample.metafinre.com/api/v1/users`
+// `http://localhost:3000/api/v1/users/update`
+// `http://localhost:3000/api/v1/users`

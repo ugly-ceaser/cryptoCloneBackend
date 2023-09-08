@@ -36,7 +36,6 @@ const userSchema = new Schema(
       required:false,
       default: 'Basic'
     },
-   
 
     role:{
       type: String,
