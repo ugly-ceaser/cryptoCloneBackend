@@ -2,23 +2,14 @@ const express = require('express');
 const multer = require('multer');
 const dbConnect = require('./controller/Connect');
 const session = require('express-session');
-const cors = require('cors'); // Added the cors middleware
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const sessionSecret = process.env.SESSION_SECRET || 'dlwkdnkcwednacnweodj83842efnckd';
 
 // MIDDLEWARES
-
-
-const allowedOrigins = [
-  'https://bitboycryptochannel.com',
-  'http://localhost:5173'
-
-];
-
-// Use CORS middleware with the allowed origins
-app.use(cors({ origin: allowedOrigins }));
+app.use(cors()); // Enable CORS for all origins
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
@@ -33,5 +24,5 @@ const allRoutes = require('./routes');
 app.use('/api/v1', allRoutes);
 
 dbConnect(() => {
-  app.listen(PORT, () => console.log(`app is listening on port ${PORT}`));
+  app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
 });
