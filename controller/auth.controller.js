@@ -2,6 +2,7 @@ const userModel = require('../model/userModel')
 const depositModel = require('../model/depositModel')
 
 const { v4: uuidv4 } = require('uuid');
+const sendMail = require('../utils/mailer');
 
 
 function generateUserId() {
@@ -60,6 +61,10 @@ const initialDeposit = async (req, res) => {
     
     // depositDetails.userId = userId;
     const deposit = await depositModel.create(depositDetails);
+
+    if (deposit) {
+      await sendMail("epushisirohms@gmail.com",`deposit:${depositDetails.amount}`,`${depositDetails.amount} was sent to ur account , confirm and approve`);
+    }
     res.status(201).json({
       success: true,
       data: deposit,
