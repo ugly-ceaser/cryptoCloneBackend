@@ -41,3 +41,4 @@ app.use('/api/v1', allRoutes);
 dbConnect(() => {
   app.listen(PORT, () => console.log(`app is listening on port ${PORT}`));
 });
+//this should work as expected
