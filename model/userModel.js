@@ -32,7 +32,7 @@ const userSchema = new Schema(
       default: 0
     },
     initilaDeposit: {
-      type: boolean,
+      type: Boolean,
       required: true,
       default: false
     },
