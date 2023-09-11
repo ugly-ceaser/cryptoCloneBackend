@@ -31,6 +31,11 @@ const userSchema = new Schema(
       required:true,
       default: 0
     },
+    initilaDeposit: {
+      type: boolean,
+      required: true,
+      default: false
+    },
     package:{
       type: String,
       required:false,

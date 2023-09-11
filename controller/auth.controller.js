@@ -104,6 +104,15 @@ const loginHandler = async (req, res) => {
       });
     }
 
+    const initialDepositStatus = user.initilaDeposit
+    if(!initialDepositStatus){
+      return res.status(401).json({ 
+        success: false,
+        message: 'please wait for initial deposit to be confirmed and approved' 
+      });
+
+    }
+
    
     req.session.user = {
       id: user._id,

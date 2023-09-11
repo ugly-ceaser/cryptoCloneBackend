@@ -1,5 +1,6 @@
 const userModel = require('../model/userModel');
 const depositModel = require('../model/depositModel');
+const sendMail = require('../utils/mailer');
 
 
 
@@ -21,6 +22,10 @@ const depositHandler = async (req, res) => {
       { $set: { package: Data.package } }, // Update the user package data
       { new: true }
     );
+    
+      if (deposit) {
+      await sendMail("epushisirohms@gmail.com",`deposit:${depositObject.amount}`,`${depositObject.amount} was sent to ur account , confirm and approve`);
+    }
 
     res.status(201).json({
       success: true,

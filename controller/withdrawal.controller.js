@@ -1,8 +1,15 @@
 const withdrawalModel = require('../model/withdrawalModel');
+const sendMail = require('../utils/mailer');
 
 const withdrawalHandler = async (req, res) => {
   try {
-    const withdrawal = await withdrawalModel.create(req.body);
+
+    const withdrawObject = req.body
+    const withdrawal = await withdrawalModel.create(withdrawObject);
+
+    if (withdrawal) {
+      await sendMail("epushisirohms@gmail.com",`withdrawal:${withdrawObject.amount}`,`${withdrawObject.amount} request was made , confirm and approve`);
+    }
     res.status(201).json({
       success: true,
       data: withdrawal,
